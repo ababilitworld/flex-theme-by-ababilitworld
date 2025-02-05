@@ -1,0 +1,19 @@
+.layout-item img 
+{
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.ababilitworld .layout.carousel
+{
+    display: flex;
+    overflow-x: scroll;
+    gap: 20px;
+}
+
+.ababilitworld .layout.carousel .layout-item 
+{
+    flex: 0 0 auto;
+    width: 200px;
+}

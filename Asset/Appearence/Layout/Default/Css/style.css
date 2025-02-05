@@ -1,0 +1,23 @@
+body
+{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile-first styles */
+.ababilitworld 
+{
+    display: grid;
+    grid-template-columns: 1fr; /* One column by default */
+    grid-template-rows: auto;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow-y: scroll;
+}
+
+.ababilitworld .layout 
+{
+    padding: 10px;
+}

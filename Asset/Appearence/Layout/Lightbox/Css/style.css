@@ -1,0 +1,16 @@
+.ababilitworld .layout.lightbox
+{
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+}
+
+.ababilitworld .layout.lightbox .lightbox-item 
+{
+    display: block;
+}
+
+.ababilitworld .layout.lightbox .lightbox-item:focus img 
+{
+    border: 2px solid #3498db;
+}

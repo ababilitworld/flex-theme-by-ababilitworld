@@ -1,0 +1,28 @@
+/* Container Block */
+.topic-info 
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Header Wrap */
+.topic-info .header .header3-wrap 
+{
+    position: relative;
+    /* padding-bottom: 5px; Adds space below the text for the line */
+}
+
+/* Underline for h3 */
+.topic-info .header .header3-wrap h3::after 
+{
+    content: "";
+    display: block;
+    width: 69px; /* Set the desired width of the line */
+    height: 2px; /* Line thickness */
+    margin-top: 18px; /* Space between the text and the line */
+    background-color: #4cb050; /* Line color */
+}

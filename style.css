@@ -1,0 +1,28 @@
+/*
+Theme Name: Flex Theme By Ababilitworld 
+Theme URI: http://ababilitworld.com/themes/flex-theme-by-ababilitworld
+Author: Ababilitworld
+Author URI: http://ababilitworld.com
+Description: A simple responsive WordPress theme with a sticky navbar using CSS Grid.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: flex-theme-by-ababilitworld
+*/
+
+  body 
+  {
+    font-family:"Open sans","Helvetica Neue", Helvetica, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+    /* font-family: "Open sans","Helvetica Neue", Helvetica, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif; */
+  }
+
+  .content 
+  {
+    padding: 16px;
+  }
+  
+  .sticky + .content 
+  {
+    padding-top: 60px;
+  }
+  

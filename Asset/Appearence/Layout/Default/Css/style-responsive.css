@@ -1,0 +1,42 @@
+/* Mobile-first styles */
+.ababilitworld {
+    display: grid;
+    grid-template-columns: 1fr; /* One column by default */
+    grid-template-rows: auto;
+    justify-content: start;
+    align-items: center;
+    margin: 0;
+}
+
+/* Tablet and iPad styles */
+@media (min-width: 768px) 
+{
+    .ababilitworld 
+    {
+        grid-template-columns: 1fr 1fr; /* Two columns layout for tablet */
+        grid-gap: 20px; /* Add some spacing between items */
+    }
+}
+
+/* Desktop and larger screens */
+@media (min-width: 1024px) 
+{
+    .ababilitworld 
+    {
+        grid-template-columns: repeat(3, 1fr); /* Three columns for desktop */
+        max-width: 1200px; /* Constrain max width to prevent too much stretching on large screens */
+        margin: 0 auto; /* Center the grid on the screen */
+        grid-gap: 30px; /* Increased spacing for desktop view */
+    }
+}
+
+/* Large screens (like TV) */
+@media (min-width: 1440px) 
+{
+    .ababilitworld 
+    {
+        grid-template-columns: repeat(4, 1fr); /* Four columns layout for very large screens */
+        grid-gap: 40px; /* Further increased spacing for large screens */
+        padding: 20px; /* Add padding to the container */
+    }
+}

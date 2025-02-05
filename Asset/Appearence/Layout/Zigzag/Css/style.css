@@ -1,0 +1,16 @@
+.ababilitworld .layout.zigzag 
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ababilitworld .layout.zigzag  .layout-item:nth-child(odd) 
+{
+    transform: translateY(10px);
+}
+
+.ababilitworld .layout.zigzag  .layout-item:nth-child(even) 
+{
+    transform: translateY(-10px);
+}

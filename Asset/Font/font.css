@@ -1,0 +1,50 @@
+@font-face 
+{
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-style: normal;
+    src: url('Montserrat/woff2/Montserrat-Regular.woff2') format('woff2'),
+         url('Montserrat/woff/Montserrat-Regular.woff') format('woff'),
+         url('Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face 
+{
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-style: normal;
+    src: url('Montserrat/woff2/Montserrat-Bold.woff2') format('woff2'),
+         url('Montserrat/woff/Montserrat-Bold.woff') format('woff'),
+         url('Montserrat/static/Montserrat-Bold.ttf') format('truetype');
+}
+
+@font-face 
+{
+    font-family: 'Open Sans';
+    font-weight: 300;
+    font-style: normal;
+    src: url('Open_Sans/woff2/OpenSans-Light.woff2') format('woff2'),
+         url('Open_Sans/woff/OpenSans-Light.woff') format('woff'),
+         url('Open_Sans/static/OpenSans-Light.ttf') format('truetype');
+}
+
+@font-face 
+{
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-style: normal;
+    src: url('Open_Sans/woff2/OpenSans-Regular.woff2') format('woff2'),
+         url('Open_Sans/woff/OpenSans-Regular.woff') format('woff'),
+         url('Open_Sans/static/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face 
+{
+    font-family: 'Open Sans';
+    font-weight: 700;
+    font-style: normal;
+    src: url('Open_Sans/woff2/OpenSans-Bold.woff2') format('woff2'),
+         url('Open_Sans/woff/OpenSans-Bold.woff') format('woff'),
+         url('Open_Sans/static/OpenSans-Bold.ttf') format('truetype');
+}
+

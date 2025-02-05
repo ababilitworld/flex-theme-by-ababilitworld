@@ -1,0 +1,78 @@
+/* General container styling for the header */
+.container-header {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to a single column for mobile */
+    grid-template-rows: auto;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    position: relative; /* Add relative positioning for the container */
+}
+
+/* Header contact information styling */
+.header-social {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px; /* Space between icons and text */
+}
+
+/* Contact icon and text styling */
+.social-icon {
+    color: #555; /* Icon color */
+    margin-right: 5px; /* Space between the icon and text */
+}
+
+/* Ensure all child elements have relative positioning */
+.container-header > * {
+    position: relative;
+}
+
+.container-header > *:nth-child(n+2)
+{
+    margin-left: 20px;
+}
+
+/* Apply the .header-place::before to all columns except the first */
+.container-header > *:nth-child(n+2)::before {
+    background: #A1A1A1;
+    content: "";
+    height: 25px;
+    position: absolute;
+    left: -20px; /*Adjust position to move it to the left of the element*/
+    top: 50%;
+    transform: rotate(15deg) translateY(-50%);
+    width: 2px;
+}
+
+/* Media query for mobile devices (up to 480px) */
+@media screen and (max-width: 480px) {
+    .container-header {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Media query for tablet devices (481px to 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .container-header {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+/* Media query for desktop devices (769px to 1200px) */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    .container-header {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Media query for large screens (above 1200px) */
+@media screen and (min-width: 1201px) {
+    .container-header {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}

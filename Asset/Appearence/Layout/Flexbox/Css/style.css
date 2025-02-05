@@ -1,0 +1,11 @@
+.ababilitworld .layout.flexbox
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ababilitworld .layout.flexbox .layout-item 
+{
+    width: calc(33.33% - 20px);
+}

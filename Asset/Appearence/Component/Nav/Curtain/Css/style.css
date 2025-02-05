@@ -1,0 +1,106 @@
+/* Curtain Menu Container */
+
+..container-curtain-menu 
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-content: start;
+    align-items: center;
+}
+
+/* Curtain Menu Styling */
+.curtain-menu 
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: #148e18dd;
+    display: grid;
+    place-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    visibility: hidden;
+}
+
+/* Show Menu when Active */
+.curtain-menu.active 
+{
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Menu Items Styling */
+.curtain-menu-items 
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Ensure li takes up full width */
+.curtain-menu-items li 
+{
+    display: flex;
+    justify-content: center;
+}
+
+/* Menu Links Styling */
+.curtain-menu-items li a 
+{
+    color: #ffffff;
+    text-decoration: none;
+    font-family: Montserrat, sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: color 0.3s ease;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+
+.curtain-menu-items li a:hover 
+{
+    color: #ffffff;
+    background-color: #000000;
+} 
+
+.curtain-menu-toggle 
+{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 9999;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer; 
+    transition: color 0.3s ease;
+}
+
+.curtain-menu-toggle:focus 
+{
+    outline: none;
+    color: #47e3ff;
+}
+
+@media (max-width: 768px) 
+{
+    .curtain-menu-items li a 
+    {
+        font-size: 20px;
+    }
+}
