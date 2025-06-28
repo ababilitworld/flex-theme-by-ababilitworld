@@ -1,0 +1,158 @@
+/* Switch Field Container */
+.switch-container {
+    margin-bottom: 1.5rem;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+/* Label Styling */
+.switch-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+/* Switch Wrapper - Handles sizing */
+.switch-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+/* Size Variations */
+.switch-wrapper.switch-small {
+    --switch-width: 50px;
+    --switch-height: 24px;
+    --switch-font-size: 10px;
+    --switch-padding: 2px;
+}
+
+.switch-wrapper.switch-medium {
+    --switch-width: 60px;
+    --switch-height: 28px;
+    --switch-font-size: 11px;
+    --switch-padding: 3px;
+}
+
+.switch-wrapper.switch-large {
+    --switch-width: 70px;
+    --switch-height: 32px;
+    --switch-font-size: 12px;
+    --switch-padding: 4px;
+}
+
+/* Switch Main Element */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: var(--switch-width);
+    height: var(--switch-height);
+}
+
+/* Hide default checkbox */
+.switch-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+/* Slider (the visible switch) */
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e0e0e0;
+    transition: .4s;
+    border-radius: 34px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Slider "knob" */
+.switch-slider:before {
+    position: absolute;
+    content: "";
+    height: calc(var(--switch-height) - (var(--switch-padding) * 2));
+    width: calc(var(--switch-height) - (var(--switch-padding) * 2));
+    left: var(--switch-padding);
+    bottom: var(--switch-padding);
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+/* Text inside the switch */
+.switch-on, .switch-off {
+    position: absolute;
+    font-size: var(--switch-font-size);
+    font-weight: bold;
+    text-transform: uppercase;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease;
+    color: white;
+}
+
+.switch-on {
+    right: 8px;
+    opacity: 0;
+}
+
+.switch-off {
+    left: 8px;
+    opacity: 1;
+}
+
+/* When checked */
+.switch-input:checked + .switch-slider {
+    background-color: #4CAF50;
+}
+
+.switch-input:checked + .switch-slider:before {
+    transform: translateX(calc(var(--switch-width) - var(--switch-height)));
+}
+
+.switch-input:checked + .switch-slider .switch-on {
+    opacity: 1;
+}
+
+.switch-input:checked + .switch-slider .switch-off {
+    opacity: 0;
+}
+
+/* Focus state */
+.switch-input:focus + .switch-slider {
+    box-shadow: 0 0 1px #4CAF50, 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Disabled state */
+.switch-input:disabled + .switch-slider {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Hover effects */
+.switch:not(.disabled):hover .switch-slider {
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.switch:not(.disabled):hover .switch-slider:before {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Animation when toggling */
+.switch-input:checked + .switch-slider {
+    animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}

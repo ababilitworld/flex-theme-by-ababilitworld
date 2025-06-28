@@ -1,5 +1,18 @@
 @font-face 
 {
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-style: normal;
+    src: url('FontAwesome/fonts/fontawesome-webfont.eot?v=4.7.0');
+    src: url('FontAwesome/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), 
+        url('FontAwesome/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), 
+        url('FontAwesome/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), 
+        url('FontAwesome/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), 
+        url('FontAwesome/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+}
+
+@font-face 
+{
     font-family: 'Montserrat';
     font-weight: 400;
     font-style: normal;
@@ -36,7 +49,7 @@
     src: url('Open_Sans/woff2/OpenSans-Regular.woff2') format('woff2'),
          url('Open_Sans/woff/OpenSans-Regular.woff') format('woff'),
          url('Open_Sans/static/OpenSans-Regular.ttf') format('truetype');
-}
+} 
 
 @font-face 
 {
@@ -48,3 +61,86 @@
          url('Open_Sans/static/OpenSans-Bold.ttf') format('truetype');
 }
 
+/**
+*IBM Plex Sans Arabic Font
+*/
+@font-face {
+    font-family: 'IBM Plex Sans Arabic';
+    src: url('IBM_Plex_Sans_Arabic/IBMPlexSansArabic-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans Arabic';
+    src: url('IBM_Plex_Sans_Arabic/IBMPlexSansArabic-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans Arabic';
+    src: url('IBM_Plex_Sans_Arabic/IBMPlexSansArabic-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans Arabic';
+    src: url('IBM_Plex_Sans_Arabic/IBMPlexSansArabic-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans Arabic';
+    src: url('IBM_Plex_Sans_Arabic/IBMPlexSansArabic-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans Arabic';
+    src: url('IBM_Plex_Sans_Arabic/IBMPlexSansArabic-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans Arabic';
+    src: url('IBM_Plex_Sans_Arabic/IBMPlexSansArabic-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+/**
+* Scheherazade New Arabic Font
+*/
+@font-face {
+    font-family: 'Scheherazade New';
+    src: url('Scheherazade_New/ScheherazadeNew-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Scheherazade New';
+    src: url('Scheherazade_New/ScheherazadeNew-Medium.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Scheherazade New';
+    src: url('Scheherazade_New/ScheherazadeNew-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Scheherazade New';
+    src: url('Scheherazade_New/Scheherazade_New-SemiBold.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}

@@ -1,0 +1,37 @@
+/* .image-upload-field {
+    margin-bottom: 20px;
+}
+
+.image-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-preview-item {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.image-preview-item img {
+    max-width: 150px;
+    height: auto;
+    display: block;
+}
+
+.remove-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #fff;
+    background: #dc3232;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+} */

@@ -1,6 +1,7 @@
 <?php
+namespace AbabilItWorld\FlexThemeByAbabilitWorld;
 
-class EcoByAbabilitworldTheme
+class Theme
 {
     public function __construct()
     {
@@ -9,10 +10,62 @@ class EcoByAbabilitworldTheme
         
         // Add action to enqueue scripts and styles
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'), 5);
+        
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'), 5);
 
         // Add action for menu creation on theme activation
         add_action('after_switch_theme', array($this, 'theme_settings'));
 
+        // Redirect user to custom url
+        add_action( 'admin_init', array($this, 'redirect_non_admin_users') );
+        
+        //Billing    
+
+        add_action('init', array($this, 'custom_billing_page'));
+        
+        add_filter('query_vars', array($this, 'add_billing_query_vars'));
+
+        add_filter('template_include', array($this, 'load_billing_template'));
+
+
+    }
+
+    /**
+     * Redirect non-admin users to a custom url
+     */
+    public function redirect_non_admin_users() 
+    {
+        // Check if user is logged in and NOT an administrator
+        if ( is_user_logged_in() && !current_user_can('administrator') ) 
+        {
+            // Redirect to custom user panel (change URL as needed)
+            wp_redirect( home_url() );
+            exit;
+        }
+    }
+
+    public function custom_billing_page()
+    {
+        add_rewrite_rule('billing/?$', 'index.php?billing=1', 'top');
+    }
+
+    public function add_billing_query_vars($vars) 
+    {
+        $vars[] = 'billing';
+        return $vars;
+    }
+
+    public function load_billing_template($template)
+    {
+        if (get_query_var('billing') == 1) 
+        {
+            $billing_template = get_template_directory() . '/Asset/Appearence/Template/Invoice/Invoice.php';
+            if (file_exists($billing_template)) 
+            {
+                return $billing_template;
+            }
+        }
+        return $template;
     }
 
     /**
@@ -33,7 +86,7 @@ class EcoByAbabilitworldTheme
         // Register navigation menu
         register_nav_menus(array(
             'primary' => __('Primary Menu', 'flex-theme-by-ababilitworld'),
-            'flex_theme_by_ababilitworld_menu' => __('Eco Theme Menu', 'flex-theme-by-ababilitworld'),
+            'flex_theme_by_ababilitworld_menu' => __('Flex Theme Menu', 'flex-theme-by-ababilitworld'),
         ));
     }
 
@@ -74,6 +127,26 @@ class EcoByAbabilitworldTheme
 
         wp_enqueue_script('flex-theme-by-ababilitworld-nav-curtain-script', get_template_directory_uri() . '/Asset/Appearence/Component/Nav/Curtain/Js/script.js', array(), time(), true);
 
+        wp_enqueue_style('flex-theme-by-ababilitworld-tab-vertical-collapsible-style', get_template_directory_uri() . '/Asset/Appearence/Component/Tab/Vertical/Collapsible/Css/style.css', array(), time());
+
+        wp_enqueue_script('flex-theme-by-ababilitworld-tab-vertical-collapsible-script', get_template_directory_uri() . '/Asset/Appearence/Component/Tab/Vertical/Collapsible/Js/script.js', array(), time(), true);
+
+        wp_enqueue_style('flex-theme-by-ababilitworld-panel-style', get_template_directory_uri() . '/Asset/Appearence/Component/Panel/V1/Css/style.css', array(), time());
+
+        //wp_enqueue_script('flex-theme-by-ababilitworld-panel-script', get_template_directory_uri() . '/Asset/Appearence/Component/Panel/V1/Js/script.js', array(), time(), true);
+
+        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-image-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Image/Css/style.css', array(), time());
+
+        wp_enqueue_script('flex-theme-by-ababilitworld-form-field-v1-image-script', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Image/Js/script.js', array(), time(), true);
+
+        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-doc-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Document/Css/style.css', array(), time());
+
+        wp_enqueue_script('flex-theme-by-ababilitworld-form-field-v1-doc-script', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Document/Js/script.js', array(), time(), true);
+
+        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-switch-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Switch/Css/style.css', array(), time());
+
+        //wp_enqueue_script('flex-theme-by-ababilitworld-form-field-v1-switch-script', get_template_directory_uri() . '/Asset/Appearence/Component/Tab/Vertical/Collapsible/Js/script.js', array(), time(), true);
+
         wp_enqueue_style('flex-theme-by-ababilitworld-topic-info-style', get_template_directory_uri() . '/Asset/Appearence/Component/TopicInfo/Default/Css/style.css', array(), time());
 
         wp_enqueue_script('flex-theme-by-ababilitworld-topic-info-script', get_template_directory_uri() . '/Asset/Appearence/Component/TopicInfo/Default/Js/script.js', array(), time(), true);
@@ -82,6 +155,9 @@ class EcoByAbabilitworldTheme
 
         // Enqueue JavaScript file
         wp_enqueue_script('flex-theme-by-ababilitworld-script', get_template_directory_uri() . '/script.js', array(), '1.0.0', true);
+        //billing
+        wp_enqueue_style('flex-theme-by-ababilitworld-billing-style', get_template_directory_uri() . '/Asset/Appearence/Template/Invoice/Css/style.css', array(), time());
+    
     }
 
     /**
@@ -166,7 +242,7 @@ class EcoByAbabilitworldTheme
                 ));
 
                 // Create page for the menu item if it does not exist
-                $this->create_page_if_not_exists($menu_item['title'], $menu_item['shortcode']);
+                $this->create_page_if_not_exists($menu_item);
             }
         }
     }
@@ -177,17 +253,17 @@ class EcoByAbabilitworldTheme
      * @param string $title Page title
      * @param string $shortcode Shortcode to include in the page content
      */
-    private function create_page_if_not_exists($title, $shortcode)
+    private function create_page_if_not_exists($data)
     {
         // Check if the page already exists
-        $page = get_page_by_path(sanitize_title($title));
+        $page = get_page_by_path(sanitize_title($data['title']));
 
         if (!$page) 
         {
             // Page does not exist, create a new one
             $page_data = array(
-                'post_title'    => $title,
-                'post_content'  => $shortcode,
+                'post_title'    => $data['title'],
+                'post_content'  => $data['shortcode'],
                 'post_status'   => 'publish',
                 'post_type'     => 'page',
             );
@@ -200,5 +276,5 @@ class EcoByAbabilitworldTheme
 }
 
 // Instantiate the class
-new EcoByAbabilitworldTheme();
+new Theme();
 ?>

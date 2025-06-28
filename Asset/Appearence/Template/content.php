@@ -4,13 +4,30 @@
     </header>
 
     <div class="entry-content">
+        <?php //get_template_part( 'Asset/Appearence/template/Tab' ); ?>
         <?php
-        the_content();
+        
+            $content = '';
+            ob_start();
+            do_action('flex_theme_by_ababilithub_content_template');
+            $content = ob_get_clean();
 
+            if (!empty($content)) 
+            {
+                echo $content;
+            } 
+            else 
+            {
+                the_content();
+            }
+        
+
+        // the_content();
         // wp_link_pages( array(
         //     'before' => '<div class="page-links">' . __( 'Pages:', 'responsive-sticky-navbar-theme' ),
         //     'after'  => '</div>',
         // ) );
-        // ?>
+        // 
+        ?>
     </div>
 </div>

@@ -28,7 +28,7 @@
     }
     ?>
 
-    <div class=".container-curtain-menu">
+    <div class="container-curtain-menu">
         <div class="curtain-menu">
             <?php
             wp_nav_menu(array(
