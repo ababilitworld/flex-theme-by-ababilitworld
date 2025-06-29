@@ -21,11 +21,11 @@ class Theme
         
         //Billing    
 
-        add_action('init', array($this, 'custom_billing_page'));
+        // add_action('init', array($this, 'custom_billing_page'));
         
-        add_filter('query_vars', array($this, 'add_billing_query_vars'));
+        // add_filter('query_vars', array($this, 'add_billing_query_vars'));
 
-        add_filter('template_include', array($this, 'load_billing_template'));
+        // add_filter('template_include', array($this, 'load_billing_template'));
 
 
     }
