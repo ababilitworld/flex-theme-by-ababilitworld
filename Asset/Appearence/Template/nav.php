@@ -43,6 +43,4 @@
     </div>
 </div>
 
-<div id="window-scroll-position"></div>
-
 

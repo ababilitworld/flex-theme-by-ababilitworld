@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var navbar = document.querySelector(".container-nav");
     var containerNavLogo = document.querySelector(".container-nav-logo");
     var adminBar = document.getElementById("wpadminbar");
-    var windowScrollPos = document.getElementById("window-scroll-position");
 
     // Check if essential elements exist
     if (!navbar || !containerNavLogo) {
@@ -31,11 +30,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Set up scroll event listener
     window.addEventListener('scroll', customSticky);
-
-    // Debugging info (optional)
-    if (windowScrollPos) {
-        window.addEventListener('scroll', function() {
-            windowScrollPos.innerHTML = `ScrollY: ${window.scrollY}, AdminBar: ${adminBarHeight}, StickyPos: ${sticky}`;
-        });
-    }
 });
