@@ -33,17 +33,17 @@
                                 
                                 <div class="info-item-2">
                                     <span class="info-item-icon"><i class="fa fa-phone"></i></span>
-                                    <?php echo esc_html(get_theme_mod('contact_number', '+8801711111497')); ?>
+                                    <?php echo esc_html(get_theme_mod('contact_number', '+8801770000099')); ?>
                                     
                                 </div>
                                 
                                 <div class="info-item-3">
                                     <span class="info-item-icon"><i class="fa fa-envelope-o"></i></span>
-                                    <?php echo esc_html(get_theme_mod('email_address', 'admin@ecosurvgroup.com')); ?>              
+                                    <?php echo esc_html(get_theme_mod('email_address', 'ababilithub@gmail.com')); ?>              
                                 </div>
                                 <div class="info-item-4">
                                 <span class="info-item-icon"><i class="fa fa-map-marker"></i></span>
-                                <span class="address-line1"><?php echo esc_html( get_theme_mod( 'address_line_1', '142/a, Urban Point, Green Road' ) ); ?></span>
+                                <span class="address-line1"><?php echo esc_html( get_theme_mod( 'address_line_1', 'Newtown - 5, Dinajpur - 5200' ) ); ?></span>
                                 <span class="country"><?php echo esc_html( get_theme_mod( 'country', 'Dhaka-1215' ) ); ?></span>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                     <div class="topic-info">
                         <div class="header">
                             <div class="header3-wrap">
-                                <h3>Map Location</h3>
+                                <h3>Important Links</h3>
                             </div>
                         </div>
                         <div class="info-body">

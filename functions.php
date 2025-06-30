@@ -6,7 +6,7 @@ class Theme
     public function __construct()
     {
         // Add action to setup theme features
-        add_action('after_setup_theme', array($this, 'theme_setup'));
+        add_action('after_setup_theme', array($this, 'theme_setup'),1);
         
         // Add action to enqueue scripts and styles
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'), 5);
@@ -73,15 +73,23 @@ class Theme
      */
     public function theme_setup()
     {
-        // Add theme support for document title tag
+        // Add theme support for post thumbnails (featured images)
         add_theme_support('post-thumbnails');
+        
+        // Set default thumbnail size (optional)
+        set_post_thumbnail_size(800, 450, true); // width, height, crop
+        
+        // Add additional image sizes (optional)
+        add_image_size('medium-large', 768, 0, false); // medium-large size
+        
+        // Other theme supports
         add_theme_support('title-tag');
         add_theme_support('custom-logo', array(
-            'height'      => 512, // Desired height of the logo in pixels
-            'width'       => 512, // Desired width of the logo in pixels
-            'flex-height' => true, // Allow flexible height
-            'flex-width'  => true, // Allow flexible width
-        ) );
+            'height'      => 512,
+            'width'       => 512,
+            'flex-height' => true,
+            'flex-width'  => true,
+        ));
 
         // Register navigation menu
         register_nav_menus(array(
@@ -127,23 +135,23 @@ class Theme
 
         wp_enqueue_script('flex-theme-by-ababilitworld-nav-curtain-script', get_template_directory_uri() . '/Asset/Appearence/Component/Nav/Curtain/Js/script.js', array(), time(), true);
 
-        wp_enqueue_style('flex-theme-by-ababilitworld-tab-vertical-collapsible-style', get_template_directory_uri() . '/Asset/Appearence/Component/Tab/Vertical/Collapsible/Css/style.css', array(), time());
+        wp_enqueue_style('flex-theme-by-ababilitworld-tab-vertical-collapsible-style', get_template_directory_uri() . '/Asset/Appearence/Component/Tab/Vertical/Collapsible/Css/Style.css', array(), time());
 
-        wp_enqueue_script('flex-theme-by-ababilitworld-tab-vertical-collapsible-script', get_template_directory_uri() . '/Asset/Appearence/Component/Tab/Vertical/Collapsible/Js/script.js', array(), time(), true);
+        wp_enqueue_script('flex-theme-by-ababilitworld-tab-vertical-collapsible-script', get_template_directory_uri() . '/Asset/Appearence/Component/Tab/Vertical/Collapsible/Js/Script.js', array(), time(), true);
 
-        wp_enqueue_style('flex-theme-by-ababilitworld-panel-style', get_template_directory_uri() . '/Asset/Appearence/Component/Panel/V1/Css/style.css', array(), time());
+        wp_enqueue_style('flex-theme-by-ababilitworld-panel-style', get_template_directory_uri() . '/Asset/Appearence/Component/Panel/V1/Css/Style.css', array(), time());
 
-        //wp_enqueue_script('flex-theme-by-ababilitworld-panel-script', get_template_directory_uri() . '/Asset/Appearence/Component/Panel/V1/Js/script.js', array(), time(), true);
+        //wp_enqueue_script('flex-theme-by-ababilitworld-panel-script', get_template_directory_uri() . '/Asset/Appearence/Component/Panel/V1/Js/Script.js', array(), time(), true);
 
-        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-image-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Image/Css/style.css', array(), time());
+        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-image-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Image/Css/Style.css', array(), time());
 
-        wp_enqueue_script('flex-theme-by-ababilitworld-form-field-v1-image-script', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Image/Js/script.js', array(), time(), true);
+        wp_enqueue_script('flex-theme-by-ababilitworld-form-field-v1-image-script', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Image/Js/Script.js', array(), time(), true);
 
-        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-doc-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Document/Css/style.css', array(), time());
+        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-doc-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Document/Css/Style.css', array(), time());
 
-        wp_enqueue_script('flex-theme-by-ababilitworld-form-field-v1-doc-script', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Document/Js/script.js', array(), time(), true);
+        wp_enqueue_script('flex-theme-by-ababilitworld-form-field-v1-doc-script', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Document/Js/Script.js', array(), time(), true);
 
-        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-switch-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Switch/Css/style.css', array(), time());
+        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-switch-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Switch/Css/Style.css', array(), time());
 
         //wp_enqueue_script('flex-theme-by-ababilitworld-form-field-v1-switch-script', get_template_directory_uri() . '/Asset/Appearence/Component/Tab/Vertical/Collapsible/Js/script.js', array(), time(), true);
 
@@ -275,6 +283,7 @@ class Theme
 
 }
 
-// Instantiate the class
-new Theme();
+add_action('after_setup_theme', function() {
+    new Theme();
+});
 ?>
