@@ -103,10 +103,10 @@ class Theme
      */
     public function enqueue_scripts()
     {
-        wp_enqueue_style('fontawesome-470', get_template_directory_uri() . '/Asset/Font/font-awesome-4.7.0/css/font-awesome.min.css', array(), time());
-        wp_enqueue_style('flex-theme-by-ababilitworld-font-100', get_template_directory_uri() . '/Asset/Font/font.css', array(), time());
+        //wp_enqueue_style('fontawesome-470', get_template_directory_uri() . '/Asset/Font/font-awesome-4.7.0/css/font-awesome.min.css', array(), time());
+        //wp_enqueue_style('flex-theme-by-ababilitworld-font-100', get_template_directory_uri() . '/Asset/Font/font.css', array(), time());
 
-        //wp_enqueue_style('fontawesome-660', get_template_directory_uri() . '/Asset/Font/fontawesome-free-6.6.0-web/css/font-awesome.min.css', array(), time());
+        wp_enqueue_style('fontawesome-660', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', array(), time());
 
         // Enqueue main stylesheet
         wp_enqueue_style('flex-theme-by-ababilitworld-style', get_stylesheet_uri());
