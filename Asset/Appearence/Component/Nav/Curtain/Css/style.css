@@ -1,12 +1,13 @@
 /* Curtain Menu Container */
 
-..container-curtain-menu 
+.container-curtain-menu 
 {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     justify-content: start;
     align-items: center;
+    
 }
 
 /* Curtain Menu Styling */
@@ -23,7 +24,8 @@
     place-items: center;
     transform: translateY(-100%);
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    visibility: hidden;
+    /* visibility: hidden; */
+    overflow-y: auto;
 }
 
 /* Show Menu when Active */
@@ -38,14 +40,17 @@
 .curtain-menu-items 
 {
     display: grid;
-    grid-template-columns: 1fr;
-    list-style: none;
+    grid-template-columns: minmax(auto, 100%);
     justify-content: center;
     align-items: center;
+    gap: 20px;
+    list-style: none;
     text-align: center;
-    grid-gap: 20px;
     padding: 0;
     margin: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 /* Ensure li takes up full width */

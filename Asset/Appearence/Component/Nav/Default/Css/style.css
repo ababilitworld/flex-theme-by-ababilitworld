@@ -1,9 +1,9 @@
-/* Container Navigation */
+/* Container Navigation - Base Styles */
 .container-nav {
     position: -webkit-sticky; /* For Safari */
     position: sticky;
     top: 0;
-    z-index: 999999;
+    z-index: 9999; /* Reduced from 999999 to work with admin bar */
     background-color: #04AA6D; 
     width: 100%;
     height: 60px;
@@ -11,16 +11,48 @@
     align-items: center;
 }
 
+/* Adjust for WordPress Admin Bar */
+.admin-bar .container-nav {
+    top: 0;
+}
+
+@media screen and (max-width: 782px) {
+    .admin-bar .container-nav {
+        top: 0;
+    }
+}
+
+@media screen and (min-width: 783px) {
+    .admin-bar .container-nav {
+        top: 46px;
+    }
+}
+
 /* Sticky Navigation when scrolling */
 .sticky {
     position: fixed;
-    top: 0;
     width: 100%;
-    z-index: 9999;
+    z-index: 9998; /* Just below the admin bar */
 }
 
-.container-nav-logo
-{
+.admin-bar .sticky {
+    top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+    .admin-bar .sticky {
+        top: 0;
+    }
+}
+
+@media screen and (min-width: 782px) {
+    .admin-bar .sticky {
+        top: 32px;
+    }
+}
+
+/* Rest of your existing styles... */
+.container-nav-logo {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -28,14 +60,12 @@
     gap: .69rem;
 }
 
-.nav-logo img 
-{
+.nav-logo img {
     width: 32px;
     height: 32px;
 }
 
-.container-nav-logo .site-name 
-{
+.container-nav-logo .site-name {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.63rem;
@@ -43,7 +73,6 @@
     color: #ffffff;
     line-height: 1.1;
 }
-
 
 /* Navigation Container */
 .nav {
@@ -84,8 +113,8 @@
 }
 
 /* Hover and Focus Styles */
-.nav-item a:hover, .nav-item a:focus 
-{
+.nav-item a:hover, 
+.nav-item a:focus {
     background-color: #000;
     color: white;
     outline: none;
@@ -98,53 +127,42 @@
 }
 
 /* Media Queries */
-
-/* Mobile devices (up to 480px) */
-@media screen and (max-width: 480px) 
-{
+@media screen and (max-width: 480px) {
     .nav,
-    .container-nav-logo
-    {
+    .container-nav-logo {
         display: none;
     }
     
-    .container-nav-logo .site-name
-    {
+    .container-nav-logo .site-name {
         display: block;
     }
 }
 
-/* Tablet devices (481px to 768px) */
 @media screen and (min-width: 481px) and (max-width: 768px) {
     .nav {
         display: none;
     }
 
-    .container-nav-logo .site-name
-    {
+    .container-nav-logo .site-name {
         display: block;
     }
 }
 
-/* Desktop devices (769px to 1200px) */
 @media screen and (min-width: 769px) and (max-width: 1200px) {
     .nav {
         display: block;
     }
-    .container-nav-logo .site-name
-    {
+    .container-nav-logo .site-name {
         display: none;
     }
 }
 
-/* Large screens (above 1200px) */
 @media screen and (min-width: 1201px) {
     .nav {
         display: block;
     }
 
-    .container-nav-logo .site-name
-    {
+    .container-nav-logo .site-name {
         display: none;
     }
 }

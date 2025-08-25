@@ -11,6 +11,64 @@
     --transition-speed: 0.3s;
 }
 
+/* Ocean Breeze Theme */
+.ocean-breeze 
+{
+    --nav-width: 180px;
+    --nav-collapsed-width: 69px;
+    --primary-color: #0072b5;
+    --primary-dark: #005a8f;
+    --text-color: #333;
+    --text-light: #6c757d;
+    --bg-color: #f8f9fa;
+    --border-color: #e3e6f0;
+    --transition-speed: 0.3s;
+    --tab-active-bg: rgba(0, 114, 181, 0.1);
+    --tab-hover-bg: rgba(0, 0, 0, 0.05);
+    --tab-content-bg: linear-gradient(135deg, #a0d2eb 0%, #e5eaf5 100%);
+    --tab-content-color: #0072b5;
+}
+
+/* Forest Majesty Theme */
+.forest-majesty
+{
+    --nav-width: 180px;
+    --nav-collapsed-width: 69px;
+    --primary-color: #2e5e4e;
+    --primary-dark: #24493b;
+    --text-color: #333;
+    --text-light: #6c757d;
+    --bg-color: #f8f9fa;
+    --border-color: #e3e6f0;
+    --transition-speed: 0.3s;
+    --tab-active-bg: rgba(46, 94, 78, 0.1);
+    --tab-hover-bg: rgba(0, 0, 0, 0.05);
+    --tab-content-bg: linear-gradient(135deg, #9cc5a1 0%, #d6e6d9 100%);
+    --tab-content-color: #2e5e4e;
+}
+
+/* Purple Dream Theme */
+.purple-dream 
+{
+    --nav-width: 180px;
+    --nav-collapsed-width: 69px;
+    --primary-color: #6b5b95;
+    --primary-dark: #56497c;
+    --text-color: #333;
+    --text-light: #6c757d;
+    --bg-color: #f8f9fa;
+    --border-color: #e3e6f0;
+    --transition-speed: 0.3s;
+    --tab-active-bg: rgba(107, 91, 149, 0.1);
+    --tab-hover-bg: rgba(0, 0, 0, 0.05);
+    --tab-content-bg: linear-gradient(135deg, #d6c2e6 0%, #f0e6fa 100%);
+    --tab-content-color: #6b5b95;
+}
+
+.tab-system {
+    padding: 10px;
+}
+
 .app-container {
     display: grid;
     grid-template-columns: var(--nav-width) 1fr;
@@ -92,6 +150,7 @@
     transition: all var(--transition-speed) ease;
     white-space: nowrap;
     border-left: 3px solid transparent;
+    cursor: pointer;
 }
 
 .tab-link:focus{
@@ -137,14 +196,27 @@
 }
 
 .tab-item.active .tab-link {
-    color: var(--primary-color);
-    background-color: rgba(78, 115, 223, 0.1);
+    color: var(--text-light);
+    background-color: var(--tab-active-bg);
     border-left: 3px solid var(--primary-color);
+}
+
+.tab-item.active .tab-link::after {
+	right: 0;
+	border: solid 8px transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-right-color: var(--primary-color);
+	top: 50%;
+	margin-top: -8px;
 }
 
 .tab-item:hover:not(.active) .tab-link {
     color: var(--text-color);
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: var(--tab-hover-bg);
 }
 
 .app-container.collapsed .tab-link {
@@ -166,24 +238,48 @@
     padding: 2rem;
     overflow-y: auto;
     display: none;
+    background: var(--tab-content-bg);
+    color:var(--tab-content-color);
 }
 
 .tab-content.active {
     display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) 
+{
     .app-container {
         grid-template-columns: var(--nav-collapsed-width) 1fr;
     }
-    
-    .app-container.expanded {
-        grid-template-columns: var(--nav-width) 1fr;
+
+    .app-container .tabs-title,
+    .app-container .tab-text
+    {
+        display: none;
     }
-    
-    .app-container.expanded .tabs-title,
-    .app-container.expanded .tab-text,
-    .app-container.expanded .tab-badge {
+
+    .app-container .tab-badge 
+    {
+        opacity: 1;
+        width: auto;
+        height: auto;
+        position: static;
+        overflow: visible;
+    }
+
+    .app-container.collapsed 
+    {
+        grid-template-columns: var(--nav-collapsed-width) 1fr;
+    }
+
+    .app-container.collapsed .tabs-title,
+    .app-container.collapsed .tab-text
+    {
+        display: none;
+    }
+
+    .app-container.collapsed .tab-badge 
+    {
         opacity: 1;
         width: auto;
         height: auto;
@@ -191,12 +287,31 @@
         overflow: visible;
     }
     
-    .app-container.expanded .tab-link {
+    .app-container.expanded 
+    {
+        grid-template-columns: var(--nav-width) 1fr;
+    }
+    
+    .app-container.expanded .tabs-title,
+    .app-container.expanded .tab-text,
+    .app-container.expanded .tab-badge 
+    {
+        display: block;
+        opacity: 1;
+        width: auto;
+        height: auto;
+        position: static;
+        overflow: visible;
+    }
+    
+    .app-container.expanded .tab-link 
+    {
         justify-content: flex-start;
         padding: 0.75rem 1rem;
     }
     
-    .app-container.expanded .tab-link i {
+    .app-container.expanded .tab-link i 
+    {
         margin-right: 0.75rem;
         font-size: 1.1rem;
     }

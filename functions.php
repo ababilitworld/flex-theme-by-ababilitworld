@@ -1,8 +1,13 @@
 <?php
 namespace AbabilItWorld\FlexThemeByAbabilitWorld;
 
+include_once('Mixin/Auth.php');
+
+use Ababilithub\FlexAuthorization\Package\Plugin\Auth\V1\Mixin\Auth as AuthMixin;
+
 class Theme
 {
+    use AuthMixin;
     public function __construct()
     {
         // Add action to setup theme features
@@ -17,55 +22,33 @@ class Theme
         add_action('after_switch_theme', array($this, 'theme_settings'));
 
         // Redirect user to custom url
-        add_action( 'admin_init', array($this, 'redirect_non_admin_users') );
+        //add_action( 'admin_init', array($this, 'redirect_non_admin_users') );
         
-        //Billing    
-
-        // add_action('init', array($this, 'custom_billing_page'));
-        
-        // add_filter('query_vars', array($this, 'add_billing_query_vars'));
-
-        // add_filter('template_include', array($this, 'load_billing_template'));
-
 
     }
 
     /**
-     * Redirect non-admin users to a custom url
+     * Redirect non-admin and non-director-admin users to a custom URL
      */
-    public function redirect_non_admin_users() 
-    {
-        // Check if user is logged in and NOT an administrator
-        if ( is_user_logged_in() && !current_user_can('administrator') ) 
+    public function redirect_non_admin_users(): void 
+    {   //exit;     
+        // Check if user is logged in
+        if (is_user_logged_in()) 
         {
-            // Redirect to custom user panel (change URL as needed)
-            wp_redirect( home_url() );
-            exit;
-        }
-    }
+            // Get current user
+            $user = wp_get_current_user();
 
-    public function custom_billing_page()
-    {
-        add_rewrite_rule('billing/?$', 'index.php?billing=1', 'top');
-    }
-
-    public function add_billing_query_vars($vars) 
-    {
-        $vars[] = 'billing';
-        return $vars;
-    }
-
-    public function load_billing_template($template)
-    {
-        if (get_query_var('billing') == 1) 
-        {
-            $billing_template = get_template_directory() . '/Asset/Appearence/Template/Invoice/Invoice.php';
-            if (file_exists($billing_template)) 
+            //echo "<pre>";print_r(get_role($user->roles[0])->capabilities);echo "</pre>";exit;
+            //echo "<pre>";print_r($this->get_all_admin_menus_with_capabilities());echo "</pre>";exit;
+            
+            // Check if user doesn't have administrator or director-admin role
+            if (!in_array('super-admin',$user->roles) && !in_array('administrator',$user->roles) && !in_array('director-admin',$user->roles)) 
             {
-                return $billing_template;
+                // Redirect to home page or custom URL
+                wp_redirect(home_url());
+                exit;
             }
         }
-        return $template;
     }
 
     /**
@@ -103,6 +86,8 @@ class Theme
      */
     public function enqueue_scripts()
     {
+        $custom_css = '';
+        wp_add_inline_style('flex-theme-by-ababilitworld-color-scheme-style', $custom_css);
         //wp_enqueue_style('fontawesome-470', get_template_directory_uri() . '/Asset/Font/font-awesome-4.7.0/css/font-awesome.min.css', array(), time());
         //wp_enqueue_style('flex-theme-by-ababilitworld-font-100', get_template_directory_uri() . '/Asset/Font/font.css', array(), time());
 
@@ -122,6 +107,8 @@ class Theme
         wp_enqueue_style('flex-theme-by-ababilitworld-layout-zigag-style', get_template_directory_uri() . '/Asset/Appearence/Layout/Zigzag/Css/style.css', array(), time());
 
         wp_enqueue_style('flex-theme-by-ababilitworld-layout-logo-style', get_template_directory_uri() . '/Asset/Appearence/Layout/Logo-Ecosurv/Css/style.css', array(), time());
+
+        wp_enqueue_style('flex-theme-by-ababilitworld-layout-logo-ababilit-style', get_template_directory_uri() . '/Asset/Appearence/Layout/Logo-Ababilit/Css/Style.css', array(), time());
 
         wp_enqueue_style('flex-theme-by-ababilitworld-layout-info-style', get_template_directory_uri() . '/Asset/Appearence/Layout/Info/Css/style.css', array(), time());
 
@@ -146,6 +133,10 @@ class Theme
         wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-image-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Image/Css/Style.css', array(), time());
 
         wp_enqueue_script('flex-theme-by-ababilitworld-form-field-v1-image-script', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Image/Js/Script.js', array(), time(), true);
+
+        wp_enqueue_style('flex-theme-by-ababilitworld-form-field-color-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Input/Color/Css/style.css', array(), time());
+
+        wp_enqueue_script('flex-theme-by-ababilitworld-form-field-color-script', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Input/Color/Js/script.js', array(), time(), true);
 
         wp_enqueue_style('flex-theme-by-ababilitworld-form-field-v1-doc-style', get_template_directory_uri() . '/Asset/Appearence/Component/Form/Field/V1/Multimedia/File/Document/Css/Style.css', array(), time());
 
@@ -286,4 +277,3 @@ class Theme
 add_action('after_setup_theme', function() {
     new Theme();
 });
-?>

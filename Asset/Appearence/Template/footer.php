@@ -44,7 +44,7 @@
                                 <div class="info-item-4">
                                 <span class="info-item-icon"><i class="fa fa-map-marker"></i></span>
                                 <span class="address-line1"><?php echo esc_html( get_theme_mod( 'address_line_1', 'Newtown - 5, Dinajpur - 5200' ) ); ?></span>
-                                <span class="country"><?php echo esc_html( get_theme_mod( 'country', 'Dhaka-1215' ) ); ?></span>
+                                <span class="country"><?php echo esc_html( get_theme_mod( 'country', 'Bangladesh' ) ); ?></span>
                                 </div>
                             </div>
                         </div>

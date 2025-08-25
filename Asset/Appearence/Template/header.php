@@ -52,7 +52,7 @@
             <div class="info-item-4">
             <span class="info-item-icon"><i class="fa fa-map-marker"></i></span>
             <span class="address-line1"><?php echo esc_html( get_theme_mod( 'address_line_1', 'Newtown 5, Dinajpur - 5200' ) ); ?></span>
-            <span class="country"><?php echo esc_html( get_theme_mod( 'country', 'Dhaka-1215' ) ); ?></span>
+            <span class="country"><?php echo esc_html( get_theme_mod( 'country', 'Bangladesh' ) ); ?></span>
             </div>
         </div>
 
@@ -65,9 +65,11 @@
 
             <div class="info-item-2">
                 <div class="header-social">
-                    <span class="social-icon"><i class="fa fa-facebook"></i></span>
-                    <span class="social-icon"><i class="fa fa-twitter"></i></span>
-                    <span class="social-icon"><i class="fa fa-instagram"></i></span>
+                    <a href="https://www.facebook.com/ababilithub.fb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://youtube.com" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                 </div>              
             </div>
             <div class="info-item-3">

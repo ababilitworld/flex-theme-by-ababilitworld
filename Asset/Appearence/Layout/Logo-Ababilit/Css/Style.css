@@ -1,0 +1,17 @@
+.site-name {
+    font-family: Annie;
+    font-weight: 700;
+    font-size: 3.1rem;
+    color: #000;
+    line-height: 1.1;
+}
+
+.site-description {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 0.79rem;
+    text-transform: uppercase;
+    color: #5d5b5b;
+    margin-top: -1.5rem; /* Negative margin to reduce space above */
+    line-height: 1.1; /* Maintain a tight line height */
+}
